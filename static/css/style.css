@@ -1,0 +1,15 @@
+
+.post{border: 1px solid black;
+max-width: 30%;
+min-height: 300px;
+background-color: white;
+text-align: center;
+margin: 20px auto;}
+div img{width: 90%}
+#form_add{margin: 20px auto;
+          width:30%;
+          border: 1px solid black;
+          display:flex;
+          flex-direction: column;
+          }
+h2{text-align: center;}

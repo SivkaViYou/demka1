@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Посты</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .post {
+        	margin-bottom:10px;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .post:last-child {
+            border-bottom: none;
+        }
+
+        .title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .content {
+            margin-bottom: 10px;
+        }
+.content img {width:90%}
+        .description {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+            }
+
+            .post {
+                padding: 15px;
+            }
+        }
+        .success{color:green;}
+        .danger{color:red;}
+    </style>
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<p class="{{ category }}" style="position: fixed; top: 10px; left: 10px;">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+    <div class="container">
+{% for post in data %}
+        <div class="post">
+            <div class="title">{{post[1]}} </div>
+            <div class="content"><img src="/{{post[3]}}"> </div>
+            <div class="description"> {{post[2]}}</div>
+        </div>
+{% endfor %}
+    </div>
+</body>
+</html>
